@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cormorant Garamond", "Zen Old Mincho", Georgia, serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Courier Prime", "Courier New", ui-monospace, monospace;
+  --font-jp: "Zen Old Mincho", "Hiragino Mincho ProN", serif;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  background: #0a0604;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100dvh;
+  overscroll-behavior-y: none;
+}
+
+/* Thin, warm scrollbars for the panels */
+.receipt-scroll,
+.lg\:overflow-y-auto,
+.overflow-y-auto {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(217, 168, 92, 0.35) transparent;
+}
+
+/* The paper receipt: a torn zigzag edge at the bottom */
+.receipt-paper::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -9px;
+  height: 10px;
+  background:
+    linear-gradient(-45deg, transparent 6px, #f3e9d4 0) 0 0 / 12px 10px repeat-x,
+    linear-gradient(45deg, transparent 6px, #f3e9d4 0) 0 0 / 12px 10px repeat-x;
+}
+
+/* A printed-looking barcode decoration */
+.receipt-barcode {
+  background: repeating-linear-gradient(
+    90deg,
+    #2a2118 0 2px,
+    transparent 2px 4px,
+    #2a2118 4px 5px,
+    transparent 5px 8px,
+    #2a2118 8px 11px,
+    transparent 11px 13px,
+    #2a2118 13px 14px,
+    transparent 14px 17px
+  );
+  opacity: 0.85;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
