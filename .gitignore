@@ -17,3 +17,8 @@ npm-debug.log*
 # OS files
 .DS_Store
 Thumbs.db
+.next/
+node_modules/
+tsconfig.tsbuildinfo
+.env*
+!.env.example
